@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+
+    <!--window.pageYOffset代表窗口左上角在垂直方向上被拉动的距离-->
+    <!--script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+            } else {
+            navbar.classList.remove("sticky");
+            }
+        }
+    </script-->
+
+    <script>
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("navbar").style.top = "0";
+        } else {
+          document.getElementById("navbar").style.top = "-65px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+    </script>
+    
+    <script>
+      function myFunction() {
+        var x = document.getElementById("navbar");
+        if (x.className === "site-navi") {
+          x.className += " responsive";
+        } else {
+          x.className = "site-navi";
+        }
+      }
+      </script>
+
+    <main class="page-content" aria-label="Content">
+        {% if page.lang %}
+        <div class="post" lang="{{page.lang}}">
+        {% else %}
+        <div class="post">
+        {% endif %}
+          <div class="wrapper">
+            <div class="right-content">
+              {{ content }}
+            </div>
+          </div>
+        </div>
+    </main>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

@@ -1,0 +1,14 @@
+<header class="site-header" role="banner">
+
+    <div class="site-navi" id="navbar">
+        {% assign default_paths = site.pages | map: "path" %}
+        <a class="site-title" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+        <a class="page-link" href="{{"/about.html" | relative_url }}" target="_blank">About</a> <!--&#x1f349 represents watermelon unicode-->
+        <a class="page-link" href="{{ "/blogs.html" | relative_url }}">Blogs</a>
+        <a class="page-link" href="javascript:void(0)">Vlogs</a>
+        <a class="page-link" href="{{ "/essays.html" | relative_url }}">Writing</a>
+        <a class="page-link" href="{{ "/contact.html" | relative_url }}">Contact</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>    
+    </div>
+
+</header>
